@@ -6,3 +6,5 @@ class EnterShortURLForm(FlaskForm):
     url = StringField('Enter URL to shorten here', validators=[DataRequired()])
     submit = SubmitField('Help me shorten')
 
+class ReturnToMainButton(FlaskForm):
+    submit = SubmitField('Go back to main')

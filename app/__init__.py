@@ -14,5 +14,6 @@ app = create_app()
 db = SQLAlchemy(app)
 
 SHORTENED_LENGTH = 6
+WEBSITE = "pikulet-short-url.herokuapp.com/"
 
 from app import routes

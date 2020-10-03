@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request
-from app import app, db, SHORTENED_LENGTH
+from app import app, db, SHORTENED_LENGTH, WEBSITE
 from app.forms import EnterShortURLForm
 from app.url_manager import url_manager
 
@@ -19,6 +19,7 @@ def index():
 def short():
     original_url = request.args['url']
     short_url = url_manager.get_short_url(original_url)
+    short_url = WEBSITE + short_url
     return render_template('result.html', 
                           title=APP_TITLE, short_url=short_url)
 @app.route('/<short_url>')

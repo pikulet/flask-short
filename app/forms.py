@@ -3,6 +3,6 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class EnterShortURLForm(FlaskForm):
-    url = StringField('Enter short url here', validators=[DataRequired()])
+    url = StringField('Enter URL to shorten here', validators=[DataRequired()])
     submit = SubmitField('Help me shorten')
 

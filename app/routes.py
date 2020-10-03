@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, request
 from app import app, db, SHORTENED_LENGTH, WEBSITE
 from app.forms import EnterShortURLForm
 from app.url_manager import url_manager
+from app.url_verifier import UrlVerifier
 
 APP_TITLE = "URL Service by Joyce"
 
@@ -17,8 +18,13 @@ def index():
 
 @app.route('/short')
 def short():
-    original_url = request.args['url']
-    short_url = url_manager.get_short_url(original_url)
+    long_url = request.args['url']
+
+    if not UrlVerifier.is_valid_url(long_url):
+        return render_template('invalid.html', title=APP_TITLE,
+                               message="I will only shorten valid URLs")
+
+    short_url = url_manager.get_short_url(long_url)
     short_url = WEBSITE + short_url
     return render_template('result.html', 
                           title=APP_TITLE, short_url=short_url)
@@ -30,7 +36,8 @@ def long(short_url):
     long_url = url_manager.get_long_url(short_url)
 
     if long_url is None:
-        return render_template('invalid.html', title=APP_TITLE)
+        return render_template('invalid.html', title=APP_TITLE,
+                               message="Oh no! The short URL is invalid.")
 
     return redirect('http://' + long_url, code=302)
 

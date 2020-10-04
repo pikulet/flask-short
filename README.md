@@ -1,4 +1,4 @@
-# flask-url-short
+# flask-short
 simple url shortener that actually makes urls longer 😂
 
 ### Setup

@@ -31,6 +31,12 @@ Modify `DeployConfig` in `config.py` as necessary.
 
 (Default) Heroku-postgresql will have the environment variable `DATABASE_URL`.
 
+### Run Tests
+
+`cd app`
+
+`python3 -m unittest discover -s tests -v`
+
 ### Improvements
 
 1. Check for hash collisions

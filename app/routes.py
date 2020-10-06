@@ -46,7 +46,7 @@ def long(short_url):
     long_url = url_manager.get_long_url(short_url)
 
     if long_url is None:
-        return redirect_invalid("Oh no!! The short URL is invalid.")
+        return redirect_invalid("Oh no! The short URL is invalid.")
 
     return redirect('http://' + long_url, code=302)
 

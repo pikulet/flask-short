@@ -33,9 +33,7 @@ Modify `DeployConfig` in `config.py` as necessary.
 
 ### Run Tests
 
-`cd app`
-
-`python3 -m unittest discover -s tests -v`
+`python3 -m unittest discover -s app.tests -v`
 
 ### Improvements
 

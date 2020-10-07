@@ -12,7 +12,7 @@ class UrlMapping(db.Model):
         self.short_url = short_url
 
     def __repr__(self):
-        return 'Mapping from long_url {} to short_url{}'.format(
+        return 'Mapping from long_url {} to short_url {}'.format(
             self.long_url, self.short_url)
 
     def serialise(self):

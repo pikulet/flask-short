@@ -8,5 +8,13 @@
     <hr>
     {{ wtf.quick_form(form) }}
     </hr>
+    <table>
+    {% for data in all_data %}
+    <tr>
+        {{ data }}
+        <br>
+    </tr>
+    {% endfor %}
+    </table>
 </div>
 {% endblock %}

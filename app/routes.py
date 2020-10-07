@@ -9,13 +9,19 @@ APP_TITLE = "URL Service by Joyce"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    all_data = url_manager.get_all_previous_data()
+    print(url_manager.get_hash_table_usage())
+
     form = EnterShortURLForm()
 
     if form.validate_on_submit():
-        return redirect(url_for('short', url=form.url.data))
+        long_url = form.url.data
+        desired_short_url = form.desired_short_url.data
+        return redirect(url_for('short', url=form.url.data,
+                                short_url=desired_short_url))
 
     return render_template('index.html', title=APP_TITLE, 
-                           form=form)
+                           form=form, all_data=all_data)
 
 @app.route('/short', methods=['GET', 'POST'])
 def short():
@@ -29,7 +35,15 @@ def short():
     if not is_url_valid:
         return redirect_invalid("I will only shorten valid URLs")
 
-    short_url = url_manager.get_short_url(long_url)
+    short_url = request.args['short_url']
+    if short_url is not "":
+        if url_manager.is_short_url_exists(short_url):
+            return redirect_invalid('Short URL taken')
+        else:
+            url_manager.set_short_url(long_url, short_url)
+    elif short_url is "":
+        short_url = url_manager.get_short_url(long_url)
+
     short_url = WEBSITE + short_url
     return render_template('result.html', title=APP_TITLE, 
                            short_url=short_url, back_btn=back_btn)
@@ -50,6 +64,13 @@ def long(short_url):
 
     return redirect('http://' + long_url, code=302)
 
+@app.route('/delete/<short_url>', methods=['GET', 'POST'])
+def delete(short_url):
+    if url_manager.is_short_url_exists(short_url):
+        url_manager.delete_short_url(short_url)
+        return redirect_invalid('Short URL has been removed')
+    else:
+        return redirect_invalid('Short URL does not exist and cannot be removed')
 
 def redirect_invalid(message):
     back_btn = ReturnToMainButton()

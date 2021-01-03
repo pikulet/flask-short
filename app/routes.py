@@ -5,7 +5,7 @@ from app.url_manager import url_manager
 from app.url_verifier import UrlVerifier
 from app.url_parser import UrlParser
 
-APP_TITLE = "URL Service by Joyce"
+APP_TITLE = 'URL Service by Joyce'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -30,18 +30,20 @@ def short():
         return redirect('/')
 
     long_url = request.args['url']
+
     protocol, long_url = UrlParser.parse(long_url)
     is_url_valid = UrlVerifier.is_url_valid(protocol, long_url)
+
     if not is_url_valid:
-        return redirect_invalid("I will only shorten valid URLs")
+        return redirect_invalid('I will only shorten valid URLs')
 
     short_url = request.args['short_url']
-    if short_url is not "":
+    if short_url is not '':
         if url_manager.is_short_url_exists(short_url):
             return redirect_invalid('Short URL taken')
         else:
             url_manager.set_short_url(long_url, short_url)
-    elif short_url is "":
+    elif short_url is '':
         short_url = url_manager.get_short_url(long_url)
 
     short_url = WEBSITE + short_url
@@ -55,12 +57,12 @@ def long(short_url):
         return redirect('/')
 
     if len(short_url) != SHORTENED_LENGTH:
-        return redirect_invalid("Oh no! The short URL is invalid.")
+        return redirect_invalid('Oh no! The short URL is invalid.')
 
     long_url = url_manager.get_long_url(short_url)
 
     if long_url is None:
-        return redirect_invalid("Oh no! The short URL is invalid.")
+        return redirect_invalid('Oh no! The short URL is invalid.')
 
     return redirect('http://' + long_url, code=302)
 

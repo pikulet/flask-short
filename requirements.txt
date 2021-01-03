@@ -1,6 +1,5 @@
 alembic==1.4.3
 APScheduler==3.6.3
-apturl==0.5.2
 asn1crypto==0.24.0
 bidict==0.21.2
 bleach==3.2.1

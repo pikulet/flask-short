@@ -77,6 +77,10 @@ To deploy,
 
 `git push heroku master`
 
+### Public Demo
+
+As I'm running a public demo, I'm also displaying all my db mappings. To remove
+errant entries, use `heroku pg:psql` to manage the db.
 
 ### Run Tests
 

@@ -1,7 +1,7 @@
-# flask-short
-simple url shortener that actually makes urls longer 😂
+# :test_tube: flask-short :test_tube:
+A url shortener that actually makes urls longer 😂 (because of the heroku domain used)
 
-### Setup
+## :dolphin: Setup
 
 Install necessary dependencies...
 
@@ -19,7 +19,7 @@ then install the python packages
 
 `python3 -m pip install --user -r requirements.txt`
 
-### Local Development
+## :firecracker: Local Development
 
 In `app/__init__.py, set `app.config.from_object(DevelopmentConfig)
 
@@ -31,7 +31,7 @@ Modify `DevelopmentConfig` in `config.py` as necessary.
 `export FLASK_APP=app.py`
 `flask run`
 
-### PostgreSQL on local environment
+## :zap: PostgreSQL on local environment
 
 `sudo apt-get install -y postgresql`
 
@@ -53,7 +53,7 @@ Set the password as needed.
 
 For reference, I've added a sample `.env` file. Modify the fields as needed.
 
-### Deploy
+## :rocket: Deployment
 
 In `app/__init__.py, set `app.config.from_object(DeployConfig)
 
@@ -77,16 +77,16 @@ To deploy,
 
 `git push heroku master`
 
-### Public Demo
+## :cactus: Public Demo
 
 As I'm running a public demo, I'm also displaying all my db mappings. To remove
 errant entries, use `heroku pg:psql` to manage the db.
 
-### Run Tests
+## :wrench: Run Tests
 
 `python3 -m unittest discover -s app.tests -v`
 
-### Improvements
+## :seedling: Improvements
 
 1. Check for hash collisions
 2. Better method to validate URLs. Waiting for `requests` timeout can be quite long.

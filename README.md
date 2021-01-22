@@ -82,6 +82,23 @@ To deploy,
 As I'm running a public demo, I'm also displaying all my db mappings. To remove
 errant entries, use `heroku pg:psql` to manage the db.
 
+Public demo is currenting INACTIVE. Feel free to host this on your own.
+
+### :one: Enter URL to shorten
+
+<img src="https://user-images.githubusercontent.com/24848927/105485513-f73b6e00-5ce7-11eb-96a9-6bf1ff28c89a.png" height="150">
+
+### :two: Returns shortened result
+<img src="https://user-images.githubusercontent.com/24848927/105485565-0e7a5b80-5ce8-11eb-9901-60f08c9a62db.png" height="100">
+
+### :three: Delete a shortened entry
+<img src="https://user-images.githubusercontent.com/24848927/105485608-1fc36800-5ce8-11eb-8b1b-ae58070509f8.png" height="100">
+
+### :four: Only shorten valid entries
+<img src="https://user-images.githubusercontent.com/24848927/105485637-2fdb4780-5ce8-11eb-8dba-72ff7c6c1b3f.png" height="150">
+
+<img src="https://user-images.githubusercontent.com/24848927/105485656-38338280-5ce8-11eb-9a9d-d5c167452c69.png" height="100">
+
 ## :wrench: Run Tests
 
 `python3 -m unittest discover -s app.tests -v`

@@ -82,7 +82,7 @@ To deploy,
 As I'm running a public demo, I'm also displaying all my db mappings. To remove
 errant entries, use `heroku pg:psql` to manage the db.
 
-Public demo is currenting INACTIVE. Feel free to host this on your own.
+Public demo is currently INACTIVE. Feel free to host this on your own.
 
 ### :one: Enter URL to shorten
 
